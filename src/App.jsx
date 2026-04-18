@@ -1,93 +1,85 @@
 import './App.css'
 
-const milestones = [
+const timeline = [
   {
-    step: '1',
     title: 'Origen artesanal',
-    text: 'Cada pieza nace en talleres locales con materiales, artesanos y lotes identificables.',
+    detail: 'Se registra el taller, materiales y lote de producción.',
   },
   {
-    step: '2',
-    title: 'Registro en Monad',
-    text: 'Se guarda cada evento clave de la cadena de suministro para dar trazabilidad verificable.',
+    title: 'Evento en Monad',
+    detail: 'Cada hito deja una prueba verificable de trazabilidad.',
   },
   {
-    step: '3',
-    title: 'Escaneo del cliente',
-    text: 'La prenda muestra su historia, autenticidad y recorrido en una experiencia simple y visual.',
+    title: 'Historia del producto',
+    detail: 'El cliente escanea y ve autenticidad, origen y recorrido.',
   },
 ]
 
-const traceItems = [
-  'Materia prima local',
-  'Taller artesanal',
-  'Control de calidad',
-  'Envío y entrega',
+const supplyChain = [
+  { label: 'Material', value: 'Algodón local' },
+  { label: 'Taller', value: 'Oaxaca / NL' },
+  { label: 'Estado', value: 'Listo para envío' },
+  { label: 'ID', value: 'MON-AR-2026-044' },
 ]
 
 function App() {
   return (
-    <main className="page-shell">
-      <section className="hero">
+    <main className="page">
+      <section className="hero-card">
         <div className="hero-copy">
-          <span className="eyebrow">Monad Blitz Monterrey · Moda + trazabilidad</span>
-          <h1>Ropa artesanal mexicana con historia verificable.</h1>
-          <p className="lead">
-            Una landing para presentar cómo tu marca usa Monad para registrar la cadena de suministro, reforzar autenticidad y conectar con el cliente final.
+          <p className="kicker">Monad Blitz Monterrey</p>
+          <h1>Artesanía mexicana con trazabilidad verificable.</h1>
+          <p className="intro">
+            Una landing y demo para mostrar cómo tu marca usa Monad para registrar
+            la cadena de suministro, validar autenticidad y contar la historia de
+            cada prenda.
           </p>
 
-          <div className="hero-actions">
-            <a className="btn primary" href="#demo">Ver demo</a>
-            <a className="btn secondary" href="#trazabilidad">Explorar trazabilidad</a>
-          </div>
-
-          <div className="stats">
-            <div><strong>100%</strong><span>hecho artesanal</span></div>
-            <div><strong>4</strong><span>eventos trazados</span></div>
-            <div><strong>Monad</strong><span>capa de verificación</span></div>
+          <div className="actions">
+            <a href="#demo" className="btn primary">Ver demo</a>
+            <a href="#flujo" className="btn ghost">Ver flujo</a>
           </div>
         </div>
 
-        <div className="hero-card">
-          <p className="card-label">Código de prenda</p>
-          <div className="code-badge">AR-2026-044</div>
-          <ul>
-            {traceItems.map((item) => (
-              <li key={item}>{item}</li>
+        <aside className="trace-panel">
+          <span className="trace-tag">Prenda rastreada</span>
+          <h2>Huipil de edición artesanal</h2>
+          <div className="trace-grid">
+            {supplyChain.map((item) => (
+              <div key={item.label}>
+                <span>{item.label}</span>
+                <strong>{item.value}</strong>
+              </div>
             ))}
-          </ul>
-        </div>
+          </div>
+        </aside>
       </section>
 
-      <section className="section" id="trazabilidad">
-        <div className="section-header">
-          <span className="eyebrow">Cómo funciona</span>
-          <h2>Ruta de la prenda, de taller a cliente</h2>
-        </div>
-        <div className="milestones">
-          {milestones.map((item) => (
-            <article className="milestone" key={item.step}>
-              <span>{item.step}</span>
+      <section className="section" id="flujo">
+        <h2>Flujo de trazabilidad</h2>
+        <div className="timeline">
+          {timeline.map((item, index) => (
+            <article className="step" key={item.title}>
+              <span>{index + 1}</span>
               <h3>{item.title}</h3>
-              <p>{item.text}</p>
+              <p>{item.detail}</p>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="section section-grid" id="demo">
+      <section className="section demo" id="demo">
         <div>
-          <span className="eyebrow">Demo del hackathon</span>
-          <h2>Una historia clara para jurado e inversionistas</h2>
+          <p className="kicker">Demo del hackathon</p>
+          <h2>Qué verán el jurado y los usuarios</h2>
           <p>
-            El proyecto muestra valor de marca, transparencia y una utilidad real de blockchain: registrar origen, validar autenticidad y mejorar confianza.
+            Una experiencia limpia con el recorrido de la prenda, el proof-of-origin
+            y el valor de confiar en una pieza artesanal auténtica.
           </p>
         </div>
-        <div className="panel">
-          <h3>Mensaje clave</h3>
-          <p>
-            “Cada prenda cuenta quién la hizo, de dónde viene y por qué es auténtica.”
-          </p>
+
+        <div className="quote-card">
+          <p>“Cada prenda cuenta su origen, su proceso y su autenticidad.”</p>
         </div>
       </section>
     </main>
